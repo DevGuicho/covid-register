@@ -17,6 +17,6 @@ app.set('views', path.join(__dirname, 'views'))
 app.set('view engine', 'ejs')
 
 // ROUTES
-app.use('/patients', patientsRouter)
+app.use(patientsRouter)
 
 app.listen(port, () => debug(`Server running on port ${port}`))

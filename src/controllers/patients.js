@@ -12,3 +12,9 @@ exports.listPatients = async (req, res) => {
     data: await Patient.find({})
   })
 }
+exports.findOneById = async (req, res) => {
+  const { id } = req.params
+  res.json({
+    data: await Patient.findById(id)
+  })
+}
