@@ -50,6 +50,7 @@ patientSchema.set('toJSON', {
   transform: (document, returnedObject) => {
     returnedObject.patientId = returnedObject._id
     delete returnedObject.__v
+    delete returnedObject._id
   }
 })
 
