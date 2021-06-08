@@ -7,32 +7,55 @@
     <header><%- include('../partials/header'); %></header>
 
     <h1>Paciente: <%= data.id %></h1>
-    <div class="card" style="width: 30rem;">
-        <div class="card-body">
-          <h4 style="font-weight:bold" class="card-title"> <%= data.name %> <%= data.lastname %></h4>
-        </div>
-        <ul class="list-group list-group-flush">
-          <li class="list-group-item"> <h6 style="font-weight:bold">CURP</h6><%= data.curp %></li>
-          <li class="list-group-item"> <h6 style="font-weight:bold">Edad</h6> <%= data.age %></li>
-          <li class="list-group-item"> <h6 style="font-weight:bold">Sexo</h6><%= data.gender %></li>
-          <li class="list-group-item"> <h6 style="font-weight: bold">Fecha de ingreso</h6>  <%= data.admissionDate %></li>
-          <li class="list-group-item"> <h6 style="font-weight: bold">Fecha primeros síntomas</h6> <%= data.symptomDate %></li>
-          <li class="list-group-item"> <h6 style="font-weight: bold">Teléfono de emergencia</h6> <%= data.contactNumber %></li>
-          <li class="list-group-item"> <h6 style="font-weight: bold">Camilla</h6> <%= data.gurney %></li>
-          <li class="list-group-item"> <h6 style="font-weight: bold">Intubado</h6>
-            <% if(data.isIntubated){ %>
-            Sí
-          <% } else{ %>  
-            No
-         <% } %> </li>
-        </ul>
-        <div class="card-body">
-            <form action="/api/patients/<%= data.id %>?_method=DELETE" method="DELETE">
-                <button value="submit" type="submit" class="btn btn-primary">Eliminar</button>
-            </form>
-          <a href="#" class="card-link">Editar</a>
-        </div>
+    <div class="card" style="width: 30rem">
+      <div class="card-body">
+        <h4 style="font-weight: bold" class="card-title">
+          <%= data.name %> <%= data.lastname %>
+        </h4>
       </div>
+      <ul class="list-group list-group-flush">
+        <li class="list-group-item">
+          <h6 style="font-weight: bold">CURP</h6>
+          <%= data.curp %>
+        </li>
+        <li class="list-group-item">
+          <h6 style="font-weight: bold">Edad</h6>
+          <%= data.age %>
+        </li>
+        <li class="list-group-item">
+          <h6 style="font-weight: bold">Sexo</h6>
+          <%= data.gender %>
+        </li>
+        <li class="list-group-item">
+          <h6 style="font-weight: bold">Fecha de ingreso</h6>
+          <%= data.admissionDate %>
+        </li>
+        <li class="list-group-item">
+          <h6 style="font-weight: bold">Fecha primeros síntomas</h6>
+          <%= data.symptomDate %>
+        </li>
+        <li class="list-group-item">
+          <h6 style="font-weight: bold">Teléfono de emergencia</h6>
+          <%= data.contactNumber %>
+        </li>
+        <li class="list-group-item">
+          <h6 style="font-weight: bold">Camilla</h6>
+          <%= data.gurney %>
+        </li>
+        <li class="list-group-item">
+          <h6 style="font-weight: bold">Intubado</h6>
+          <% if(data.isIntubated){ %> Sí <% } else{ %> No <% } %>
+        </li>
+      </ul>
+      <div class="card-body">
+        <form action="/api/delete-patient/<%= data.id %>" method="GET">
+          <button value="submit" type="submit" class="btn btn-primary">
+            Eliminar
+          </button>
+        </form>
+        <a href="#" class="card-link">Editar</a>
+      </div>
+    </div>
     <footer><%- include('../partials/footer'); %></footer>
   </body>
 </html>

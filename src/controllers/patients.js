@@ -8,18 +8,18 @@ exports.addPatient = (req, res) => {
 }
 
 exports.find = async (req, res) => {
-  res.render('pages/patients',{ data: await Patient.find({})})
+  res.render('pages/patients', { data: await Patient.find({}) })
 }
 exports.findOneById = async (req, res) => {
   const { id } = req.params
-  res.render('pages/onePatient',{data: await Patient.findById(id)})
+  res.render('pages/onePatient', { data: await Patient.findById(id) })
 }
 exports.create = async (req, res) => {
   const patient = req.body
   const parsedPatient = parsePatient(patient)
   const newPatient = new Patient(parsedPatient)
-
-  res.render('pages/patients',{data: await newPatient.save()})
+  await newPatient.save()
+  res.redirect('/api/patients')
 }
 exports.update = async (req, res) => {
   const patient = req.query
@@ -33,9 +33,10 @@ exports.update = async (req, res) => {
 
 exports.delete = async (req, res) => {
   const { id } = req.params
-  res.json({
-    data: await Patient.findByIdAndDelete(id)
-  })
+
+  await Patient.findByIdAndDelete(id)
+
+  res.redirect('/')
 }
 
 const parsePatient = (patient) => {
