@@ -24,4 +24,6 @@ router.post('/api/update-patient/:id', patientsController.update)
 // Esta ruta elimina registro de paciente
 router.get('/api/delete-patient/:id', patientsController.delete)
 
+router.get('/api/patients/editar/:id', patientsController.edit)
+
 module.exports = router

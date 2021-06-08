@@ -1,4 +1,5 @@
 const Patient = require('../models/Patient')
+const date = require('date-and-time')
 
 exports.patients = (req, res) => {
   res.render('pages/index')
@@ -22,11 +23,10 @@ exports.create = async (req, res) => {
   res.redirect('/api/patients')
 }
 exports.update = async (req, res) => {
-  const patient = req.query
+  const patient = req.body
   const { id } = req.params
   const parsedPatient = parsePatient(patient)
-
-  res.json({
+  res.render('pages/onePatient', {
     data: await Patient.findByIdAndUpdate(id, parsedPatient, { new: true })
   })
 }
@@ -37,6 +37,12 @@ exports.delete = async (req, res) => {
   await Patient.findByIdAndDelete(id)
 
   res.redirect('/')
+}
+
+exports.edit = async (req, res) => {
+  const { id } = req.params
+
+  res.render('pages/updatePatient', { data: await Patient.findById(id) })
 }
 
 const parsePatient = (patient) => {
