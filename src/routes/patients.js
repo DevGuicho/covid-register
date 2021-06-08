@@ -21,7 +21,7 @@ router.post('/api/patients', patientsController.create)
 // Esta ruta actualiza un nuevo registro de paciente
 router.put('/api/patients/:id', patientsController.update)
 
-// Esta ruta actualiza un nuevo registro de paciente
+// Esta ruta elimina registro de paciente
 router.delete('/api/patients/:id', patientsController.delete)
 
 module.exports = router

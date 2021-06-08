@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <%- include('../partials/head'); %>
+  </head>
+  <body class="container">
+    <header><%- include('../partials/header'); %></header>
+
+    <h1>Pacientes registrados</h1>
+
+    <div class="list-group">
+        <% data.forEach(function(o) { %>
+            <a href="/api/patients/<%= o.id %>" class="list-group-item list-group-item-action"><%= o.id %> - <%= o.name %> <%= o.lastname%> </a>
+        <% }); %>
+    </div>
+    <footer><%- include('../partials/footer'); %></footer>
+  </body>
+</html>

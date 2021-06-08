@@ -1,0 +1,83 @@
+<form action="/api/patients" method="post">
+    <div class="form-row">
+      <div class="form-group col-md-6">
+        <label for="inputName">Nombre</label>
+        <input type="text" class="form-control" id="inputName" name="name" placeholder="Nombre">
+      </div>
+      <div class="form-group col-md-6">
+        <label for="inputLastname">Apellidos </label>
+        <input type="text" class="form-control" id="inputLastname" name="lastname" placeholder="Apellido(s)">
+      </div>
+    </div>
+    <div class="form-row">
+        <div class="form-group col-md-6">
+            <label for="inputCURP">CURP</label>
+        <input type="text" class="form-control" name="curp" id="inputCURP">
+        </div>
+        <div class="form-group col-md-6">
+            <label for="inputAge">Edad</label>
+            <input type="number" class="form-control" name="age" id="inputAge">
+        </div>
+    </div>
+    <div class="form-row">
+        <div class="form-group">
+            <legend class="col-form-label col-sm-2 pt-0">Sexo </legend>
+            <div class="col-md-6">
+                <div class="form-check">
+                  <input class="form-check-input" type="radio" name="gender" id="radioGender1" value="Mujer">
+                  <label class="form-check-label" for="radioGender1">
+                    Mujer
+                  </label>
+                </div>
+                <div class="form-check">
+                  <input class="form-check-input" type="radio" name="gender" id="radioGender2" value="Hombre">
+                  <label class="form-check-label" for="radioGender2">
+                    Hombre
+                  </label>
+                </div>
+             </div>
+        </div>
+    </div>
+    <div class="form-row">
+      <div class="form-group col-md-6">
+        <label for="inputContact">Número de contacto</label>
+        <input type="tel" class="form-control" name="contactNumber" id="inputContact" placeholder="55-123-4567">
+      </div>
+      <div class="form-group col-md-6">
+        <label for="inputSymptom">Fecha síntomas</label>
+        <input type="date" class="form-control" name="symptomDate" id="inputSymptom">
+      </div>
+    </div>
+    <div class="form-row">
+        <div class="form-group col-md-6">
+            <label for="inputAdmission">Fecha de ingreso</label>
+            <input type="date" class="form-control" name="admissionDate" id="inputAdmission">
+        </div>
+        <div class="form-row">
+        <div class="form-group">
+            <legend class="col-form-label col-sm-2 pt-0">Intubado </legend>
+            <div class="col-md-6">
+                <div class="form-check">
+                  <input class="form-check-input" type="radio" name="isIntubated" id="radioIntub1" value="false">
+                  <label class="form-check-label" for="radioIntub1">
+                    No
+                  </label>
+                </div>
+                <div class="form-check">
+                  <input class="form-check-input" type="radio" name="isIntubated" id="radioIntub2" value="true">
+                  <label class="form-check-label" for="radioIntub2">
+                    Sí
+                  </label>
+                </div>
+             </div>
+        </div>
+        </div>
+    </div>
+    <div class="form-row">
+        <div class="form-group col-md-6">
+            <label for="inputGurney">Número de camilla</label>
+            <input type="number" class="form-control" name="gurney" id="inputGurney">
+        </div>
+    </div>
+    <button value="submit" type="submit" class="btn btn-primary">Registrar</button>
+</form>
