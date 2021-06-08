@@ -10,10 +10,10 @@ router.get('/', patientsController.patients)
 router.get('/add-patient', patientsController.addPatient)
 
 // Esta ruta muestra todos los registros en formato JSON
-router.get('/api/patients', patientsController.find)
+router.get('/patients-list', patientsController.find)
 
 // Esta ruta muestra un registro en formato JSON
-router.get('/api/patients/:id', patientsController.findOneById)
+router.get('/patient/:id', patientsController.findOneById)
 
 // Esta ruta crea un nuevo registro de paciente
 router.post('/api/patients', patientsController.create)
@@ -24,6 +24,6 @@ router.post('/api/update-patient/:id', patientsController.update)
 // Esta ruta elimina registro de paciente
 router.get('/api/delete-patient/:id', patientsController.delete)
 
-router.get('/api/patients/editar/:id', patientsController.edit)
+router.get('/update-patient/:id', patientsController.edit)
 
 module.exports = router

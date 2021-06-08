@@ -3,129 +3,231 @@
   <head>
     <%- include('../partials/head'); %>
   </head>
-  <body class="container">
-    <header><%- include('../partials/header'); %></header>
+  <body class="d-flex flex-column min-vh-100 justify-content-between">
+    <header><%- include('../partials/header', {page:''}); %></header>
 
-    <h1>Editar paciente: <%= data.id%></h1>
+    <div class="container">
+      <h1>Editar paciente: <%= data.id%></h1>
 
-    <form action="/api/update-patient/<%= data.id %>" method="post">
+      <form action="/api/update-patient/<%= data._id %>" method="post">
         <div class="form-row">
           <div class="form-group col-md-6">
             <label for="inputName">Nombre</label>
-            <input type="text" class="form-control" id="inputName" name="name" placeholder="<%= data.name %>" value="<%= data.name %>">
+            <input
+              type="text"
+              class="form-control"
+              id="inputName"
+              name="name"
+              placeholder="<%= data.name %>"
+              value="<%= data.name %>"
+            />
           </div>
           <div class="form-group col-md-6">
             <label for="inputLastname">Apellidos </label>
-            <input type="text" class="form-control" value="<%= data.lastname %>" id="inputLastname" name="lastname" placeholder="<%= data.lastname %>">
+            <input
+              type="text"
+              class="form-control"
+              value="<%= data.lastname %>"
+              id="inputLastname"
+              name="lastname"
+              placeholder="<%= data.lastname %>"
+            />
           </div>
         </div>
         <div class="form-row">
-            <div class="form-group col-md-6">
-                <label for="inputCURP">CURP</label>
-            <input type="text" class="form-control" name="curp" value="<%= data.curp %>" placeholder="<%= data.curp %>" id="inputCURP">
-            </div>
-            <div class="form-group col-md-6">
-                <label for="inputAge">Edad</label>
-                <input type="number" class="form-control" value="<%= data.age %>" placeholder="<%= data.age %>" name="age" id="inputAge">
-            </div>
+          <div class="form-group col-md-6">
+            <label for="inputCURP">CURP</label>
+            <input
+              type="text"
+              class="form-control"
+              name="curp"
+              value="<%= data.curp %>"
+              placeholder="<%= data.curp %>"
+              id="inputCURP"
+            />
+          </div>
+          <div class="form-group col-md-6">
+            <label for="inputAge">Edad</label>
+            <input
+              type="number"
+              class="form-control"
+              value="<%= data.age %>"
+              placeholder="<%= data.age %>"
+              name="age"
+              id="inputAge"
+            />
+          </div>
         </div>
         <div class="form-row">
-            <div class="form-group">
-                <legend class="col-form-label col-sm-2 pt-0">Sexo </legend>
-                <% if(data.gender === 'Mujer'){ %> 
-                    <div class="col-md-6">
-                        <div class="form-check">
-                          <input class="form-check-input" type="radio" name="gender" id="radioGender1" value="Mujer" checked>
-                          <label class="form-check-label" for="radioGender1">
-                            Mujer
-                          </label>
-                        </div>
-                        <div class="form-check">
-                          <input class="form-check-input" type="radio" name="gender" id="radioGender2" value="Hombre">
-                          <label class="form-check-label" for="radioGender2">
-                            Hombre
-                          </label>
-                        </div>
-                     </div>
-                <% } else{ %> 
-                <div class="col-md-6">
-                    <div class="form-check">
-                      <input class="form-check-input" type="radio" name="gender" id="radioGender1" value="Mujer">
-                      <label class="form-check-label" for="radioGender1">
-                        Mujer
-                      </label>
-                    </div>
-                    <div class="form-check">
-                      <input class="form-check-input" type="radio" name="gender" id="radioGender2" value="Hombre" checked>
-                      <label class="form-check-label" for="radioGender2">
-                        Hombre
-                      </label>
-                    </div>
-                 </div>
-                 <% } %>
+          <div class="form-group">
+            <legend class="col-form-label col-sm-2 pt-0">Sexo</legend>
+            <% if(data.gender === 'Mujer'){ %>
+            <div class="col-md-6">
+              <div class="form-check">
+                <input
+                  class="form-check-input"
+                  type="radio"
+                  name="gender"
+                  id="radioGender1"
+                  value="Mujer"
+                  checked
+                />
+                <label class="form-check-label" for="radioGender1">
+                  Mujer
+                </label>
+              </div>
+              <div class="form-check">
+                <input
+                  class="form-check-input"
+                  type="radio"
+                  name="gender"
+                  id="radioGender2"
+                  value="Hombre"
+                />
+                <label class="form-check-label" for="radioGender2">
+                  Hombre
+                </label>
+              </div>
             </div>
+            <% } else{ %>
+            <div class="col-md-6">
+              <div class="form-check">
+                <input
+                  class="form-check-input"
+                  type="radio"
+                  name="gender"
+                  id="radioGender1"
+                  value="Mujer"
+                />
+                <label class="form-check-label" for="radioGender1">
+                  Mujer
+                </label>
+              </div>
+              <div class="form-check">
+                <input
+                  class="form-check-input"
+                  type="radio"
+                  name="gender"
+                  id="radioGender2"
+                  value="Hombre"
+                  checked
+                />
+                <label class="form-check-label" for="radioGender2">
+                  Hombre
+                </label>
+              </div>
+            </div>
+            <% } %>
+          </div>
         </div>
         <div class="form-row">
           <div class="form-group col-md-6">
             <label for="inputContact">Número de contacto</label>
-            <input type="tel" class="form-control" placeholder="<%= data.contactNumber %>" value="<%= data.contactNumber %>" name="contactNumber" id="inputContact" placeholder="55-123-4567">
+            <input
+              type="tel"
+              class="form-control"
+              placeholder="<%= data.contactNumber %>"
+              value="<%= data.contactNumber %>"
+              name="contactNumber"
+              id="inputContact"
+              placeholder="55-123-4567"
+            />
           </div>
           <div class="form-group col-md-6">
             <label for="inputSymptom">Fecha síntomas</label>
-            <input type="date" class="form-control" value="<%= data.symptomDate %>" name="symptomDate" id="inputSymptom">
+            <input
+              type="date"
+              class="form-control"
+              value="<%= data.symptomDate %>"
+              name="symptomDate"
+              id="inputSymptom"
+            />
           </div>
         </div>
         <div class="form-row">
-            <div class="form-group col-md-6">
-                <label for="inputAdmission">Fecha de ingreso</label>
-                <input type="date" class="form-control" value="<%= data.admissionDate %>" name="admissionDate" id="inputAdmission">
-            </div>
-            <div class="form-row">
+          <div class="form-group col-md-6">
+            <label for="inputAdmission">Fecha de ingreso</label>
+            <input
+              type="date"
+              class="form-control"
+              value="<%= data.admissionDate %>"
+              name="admissionDate"
+              id="inputAdmission"
+            />
+          </div>
+          <div class="form-row">
             <div class="form-group">
-                <legend class="col-form-label col-sm-2 pt-0">Intubado </legend>
-                <% if(data.isIntubated){ %> 
-                    <div class="col-md-6">
-                        <div class="form-check">
-                          <input class="form-check-input" type="radio" name="isIntubated" id="radioIntub1" value="false">
-                          <label class="form-check-label" for="radioIntub1">
-                            No
-                          </label>
-                        </div>
-                        <div class="form-check">
-                          <input class="form-check-input" checked type="radio" name="isIntubated" id="radioIntub2" value="true">
-                          <label class="form-check-label" for="radioIntub2">
-                            Sí
-                          </label>
-                        </div>
-                     </div>
-                <% } else{ %> 
-                    <div class="col-md-6">
-                        <div class="form-check">
-                          <input class="form-check-input" checked type="radio" name="isIntubated" id="radioIntub1" value="false">
-                          <label class="form-check-label" for="radioIntub1">
-                            No
-                          </label>
-                        </div>
-                        <div class="form-check">
-                          <input class="form-check-input" type="radio" name="isIntubated" id="radioIntub2" value="true">
-                          <label class="form-check-label" for="radioIntub2">
-                            Sí
-                          </label>
-                        </div>
-                     </div>
-                <% } %>
+              <legend class="col-form-label col-sm-2 pt-0">Intubado</legend>
+              <% if(data.isIntubated){ %>
+              <div class="col-md-6">
+                <div class="form-check">
+                  <input
+                    class="form-check-input"
+                    type="radio"
+                    name="isIntubated"
+                    id="radioIntub1"
+                    value="false"
+                  />
+                  <label class="form-check-label" for="radioIntub1"> No </label>
+                </div>
+                <div class="form-check">
+                  <input
+                    class="form-check-input"
+                    checked
+                    type="radio"
+                    name="isIntubated"
+                    id="radioIntub2"
+                    value="true"
+                  />
+                  <label class="form-check-label" for="radioIntub2"> Sí </label>
+                </div>
+              </div>
+              <% } else{ %>
+              <div class="col-md-6">
+                <div class="form-check">
+                  <input
+                    class="form-check-input"
+                    checked
+                    type="radio"
+                    name="isIntubated"
+                    id="radioIntub1"
+                    value="false"
+                  />
+                  <label class="form-check-label" for="radioIntub1"> No </label>
+                </div>
+                <div class="form-check">
+                  <input
+                    class="form-check-input"
+                    type="radio"
+                    name="isIntubated"
+                    id="radioIntub2"
+                    value="true"
+                  />
+                  <label class="form-check-label" for="radioIntub2"> Sí </label>
+                </div>
+              </div>
+              <% } %>
             </div>
-            </div>
+          </div>
         </div>
         <div class="form-row">
-            <div class="form-group col-md-6">
-                <label for="inputGurney">Número de camilla</label>
-                <input type="number" class="form-control" name="gurney" value="<%= data.gurney %>" placeholder="<%= data.gurney %>" id="inputGurney">
-            </div>
+          <div class="form-group col-md-6">
+            <label for="inputGurney">Número de camilla</label>
+            <input
+              type="number"
+              class="form-control"
+              name="gurney"
+              value="<%= data.gurney %>"
+              placeholder="<%= data.gurney %>"
+              id="inputGurney"
+            />
+          </div>
         </div>
-        <button value="submit" type="submit" class="btn btn-primary">Actualizar</button>
-    </form>
-
+        <button value="submit" type="submit" class="btn btn-success">
+          Actualizar
+        </button>
+      </form>
+    </div>
     <footer><%- include('../partials/footer'); %></footer>
   </body>
 </html>

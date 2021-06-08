@@ -3,13 +3,13 @@
   <head>
     <%- include('../partials/head'); %>
   </head>
-  <body class="container">
-    <header><%- include('../partials/header'); %></header>
+  <body class="d-flex flex-column min-vh-100 justify-content-between">
+    <header><%- include('../partials/header', {page:'add'}); %></header>
 
-    <main>
+    <main class="container py-4">
       <h1>Registrar nuevo Paciente</h1>
+      <%- include('../partials/formNuevo'); %>
     </main>
-    <%- include('../partials/formNuevo'); %>
     <footer><%- include('../partials/footer'); %></footer>
   </body>
 </html>

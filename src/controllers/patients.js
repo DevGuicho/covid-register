@@ -1,5 +1,4 @@
 const Patient = require('../models/Patient')
-const date = require('date-and-time')
 
 exports.patients = (req, res) => {
   res.render('pages/index')
@@ -20,15 +19,15 @@ exports.create = async (req, res) => {
   const parsedPatient = parsePatient(patient)
   const newPatient = new Patient(parsedPatient)
   await newPatient.save()
-  res.redirect('/api/patients')
+  res.redirect('/patients-list')
 }
 exports.update = async (req, res) => {
   const patient = req.body
   const { id } = req.params
   const parsedPatient = parsePatient(patient)
-  res.render('pages/onePatient', {
-    data: await Patient.findByIdAndUpdate(id, parsedPatient, { new: true })
-  })
+  console.log(id)
+  await Patient.findByIdAndUpdate(id, parsedPatient, { new: true })
+  res.redirect(`/patient/${id}`)
 }
 
 exports.delete = async (req, res) => {
@@ -36,13 +35,19 @@ exports.delete = async (req, res) => {
 
   await Patient.findByIdAndDelete(id)
 
-  res.redirect('/')
+  res.redirect('/api/patients')
 }
 
 exports.edit = async (req, res) => {
   const { id } = req.params
+  const { _doc: patient } = await Patient.findById(id)
+  const data = {
+    ...patient,
+    admissionDate: patient.admissionDate.toISOString().substr(0, 10),
+    symptomDate: patient.symptomDate.toISOString().substr(0, 10)
+  }
 
-  res.render('pages/updatePatient', { data: await Patient.findById(id) })
+  res.render('pages/updatePatient', { data: data })
 }
 
 const parsePatient = (patient) => {
