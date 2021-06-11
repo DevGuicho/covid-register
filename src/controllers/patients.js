@@ -35,7 +35,7 @@ exports.delete = async (req, res) => {
 
   await Patient.findByIdAndDelete(id)
 
-  res.redirect('/api/patients')
+  res.redirect('/patients-list')
 }
 
 exports.edit = async (req, res) => {

@@ -9,10 +9,10 @@ router.get('/', patientsController.patients)
 // Esta ruta renderiza la pagina addPatient
 router.get('/add-patient', patientsController.addPatient)
 
-// Esta ruta muestra todos los registros en formato JSON
+// Esta ruta muestra todos los registros
 router.get('/patients-list', patientsController.find)
 
-// Esta ruta muestra un registro en formato JSON
+// Esta ruta muestra un registro
 router.get('/patient/:id', patientsController.findOneById)
 
 // Esta ruta crea un nuevo registro de paciente
